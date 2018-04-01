@@ -12,9 +12,10 @@ namespace DAL.EF
     {
         public RatesDBContext() : base()
         {
-            //Database.SetInitializer<RatesDBContext>(new DropCreateDatabaseAlways<RatesDBContext>());
+            
         }
 
         public DbSet<HistoricalRateData> histories { get; set; }
+        public DbSet<Currency> currencies { get; set; }
     }
 }

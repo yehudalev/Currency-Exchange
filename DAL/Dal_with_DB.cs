@@ -17,7 +17,7 @@ namespace DAL
 {
     class Dal_with_DB : IDAL
     {
-       
+
         string url = "http://apilayer.net/api/";
         string key = "8ef596cb8c336f1f3aeb8edbe1d573e6";
         CurrencyLayerApi instance { get; set; }
@@ -26,7 +26,7 @@ namespace DAL
         {
             this.instance = new CurrencyLayerApi(url, key);
         }
-        
+
         //retuen enumrable DateTime by given date range 
         static public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
         {
@@ -49,7 +49,7 @@ namespace DAL
             {
                 List<HistoricalRateData> res = new List<HistoricalRateData>();
                 res = ctx.histories.SqlQuery("SELECT * FROM dbo.HistoricalRateDatas WHERE dateTime = @p0", date.ToString()).ToList<HistoricalRateData>();
-                if(res.Count != 0)
+                if (res.Count != 0)
                 {
                     return res;
                 }
@@ -80,9 +80,21 @@ namespace DAL
 
         public ICollection<Currency> getListCurrencies()
         {
-            var listCurr = instance.Invoke<DAL.json.CurrencyListModel>("list");
-            ICollection<Currency> list = listCurr.Result.quotes.Select(p => new Currency(p.Key, p.Value)).ToList();
-            return list;
+            using (var ctx = new RatesDBContext())
+            {
+                List<Currency> res = new List<Currency>();
+                res = ctx.currencies.SqlQuery("SELECT * FROM dbo.Currencies").ToList<Currency>();
+                if (res.Count == 0)
+                {
+                    var listCurr = instance.Invoke<DAL.json.CurrencyListModel>("list");
+                    ICollection<Currency> list = listCurr.Result.quotes.Select(p => new Currency(p.Key, p.Value)).ToList();
+                    ctx.currencies.AddRange(list);
+                    ctx.SaveChanges();
+                    return list;
+                }
+
+                return res;
+            }
         }
 
         public ICollection<HistoricalRateData> getLiveCurrencies()
@@ -128,10 +140,10 @@ namespace DAL
 
             using (var ctx = new RatesDBContext())
             {
-                getRatesByRange(new DateTime(2017, 1, 1), new DateTime(2018, 3, 22));                 
+                getRatesByRange(new DateTime(2017, 1, 1), new DateTime(2018, 3, 22));
             }
         }
-        
+
     }
 }
 

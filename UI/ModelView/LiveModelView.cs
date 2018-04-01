@@ -16,6 +16,7 @@ namespace UI.ModelView
         public LiveModelView()
         {
             IBL myBL = Factory.getBL();
+    
             ICollection<HistoricalRateData> historicalRates = myBL.getLiveCurrencies();
             ICollection<Currency> list = myBL.getListCurrencies();
             foreach (HistoricalRateData item in historicalRates)
