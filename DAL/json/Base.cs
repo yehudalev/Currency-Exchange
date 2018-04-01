@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.service
+namespace DAL.json
 {
-    public class BaseModel
+    public class Base
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -15,7 +15,8 @@ namespace DAL.service
         [JsonProperty("error")]
         public Error Error { get; set; }
     }
-    public class Error : BaseModel
+
+    public class Error : Base
     {
 
         [JsonProperty("code")]

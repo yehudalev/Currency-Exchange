@@ -55,14 +55,13 @@
     <Compile Include="Factory.cs" />
     <Compile Include="EF\HistoricalRatesContext.cs" />
     <Compile Include="IDAL.cs" />
+    <Compile Include="json\Base.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="service\BaseModel.cs" />
-    <Compile Include="service\Conversion.cs" />
-    <Compile Include="service\CurrencyLayerApi.cs" />
-    <Compile Include="service\CurrencyListModel.cs" />
-    <Compile Include="service\ForgeApiElement.cs" />
-    <Compile Include="service\HistoryModel.cs" />
-    <Compile Include="service\LiveModel.cs" />
+    <Compile Include="json\Conversion.cs" />
+    <Compile Include="json\CurrencyLayerApi.cs" />
+    <Compile Include="json\CurrencyListModel.cs" />
+    <Compile Include="json\HistoryModel.cs" />
+    <Compile Include="json\LiveModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

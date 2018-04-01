@@ -1,5 +1,6 @@
 ﻿using BE;
 using DAL.EF;
+using DAL.json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,24 @@ namespace DAL
 {
     class Dal_with_DB : IDAL
     {
+       
+        string url = "http://apilayer.net/api/";
+        string key = "8ef596cb8c336f1f3aeb8edbe1d573e6";
+        CurrencyLayerApi instance { get; set; }
 
+        public Dal_with_DB()
+        {
+            this.instance = new CurrencyLayerApi(url, key);
+        }
+        
+        //retuen enumrable DateTime by given date range 
         static public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
         {
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
                 yield return day;
         }
 
+        //convert unix stamp to DateTime .net class
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
@@ -31,7 +43,6 @@ namespace DAL
             return dtDateTime;
         }
 
-        //internal use for the getRatesByDate function
         public ICollection<HistoricalRateData> addRatesByDate(DateTime date)
         {
             using (var ctx = new RatesDBContext())
@@ -42,8 +53,7 @@ namespace DAL
                 {
                     return res;
                 }
-                var instance = new DAL.service.CurrencyLayerApi("http://apilayer.net/api/", "8ef596cb8c336f1f3aeb8edbe1d573e6");
-                var historicalData = instance.Invoke<DAL.service.HistoryModel>("historical", new Dictionary<string, string>
+                var historicalData = instance.Invoke<DAL.json.HistoryModel>("historical", new Dictionary<string, string>
                 {
                      { "date", date.ToString("yyyy-MM-dd") }
                 });
@@ -58,8 +68,7 @@ namespace DAL
 
         public double convert(string from, string to, string amount)
         {
-            var instance = new DAL.service.CurrencyLayerApi("http://apilayer.net/api/", "8ef596cb8c336f1f3aeb8edbe1d573e6");
-            var conversion = instance.Invoke<service.ConversionModel>("convert", new Dictionary<string, string>
+            var conversion = instance.Invoke<json.Conversion>("convert", new Dictionary<string, string>
             {
                  { "from", from },
                  { "to", to },
@@ -69,50 +78,16 @@ namespace DAL
             return res;
         }
 
-        //public async Task<service.ForgeApiElement> WebApiRequestForgeAsync(string from, string to, string amount)
-        //{
-        //    service.ForgeApiElement res = null;
-        //    string json_data = "";
-        //    using (var w = new WebClient())
-        //    {
-        //        json_data = await w.DownloadStringTaskAsync("https://forex.1forge.com/1.0.3/convert?from="+ from +"&to=" + to +"&quantity="+ amount +"&api_key=WoIQdAVTDNQrbKUtv6tpZ9JFRapq27hs");
-        //        if (!string.IsNullOrEmpty(json_data) &&     // protect from network problems
-        //            json_data[0] == '[' &&                  // protect from Internet Rimon problems
-        //            !json_data.Contains("\"error\":true"))  // protect from 1Forge problems
-        //        {
-        //            //var x = JsonConvert.DeserializeObject<ForgeApi>(json_data);
-        //            var x = JsonConvert.DeserializeObject<List<service.ForgeApiElement>>(json_data);
-
-        //            res = new service.ForgeApiElement
-        //            {
-        //                value = x[0].value,
-        //                text = x[0].text,
-        //                timestamp = x[0].timestamp
-        //            };
-
-        //        }
-
-        //        return res;
-        //    }
-            
-        //  }
-
-
-
-
-
         public ICollection<Currency> getListCurrencies()
         {
-            var instance = new DAL.service.CurrencyLayerApi("http://apilayer.net/api/", "8ef596cb8c336f1f3aeb8edbe1d573e6");
-            var listCurr = instance.Invoke<DAL.service.CurrencyListModel>("list");
+            var listCurr = instance.Invoke<DAL.json.CurrencyListModel>("list");
             ICollection<Currency> list = listCurr.Result.quotes.Select(p => new Currency(p.Key, p.Value)).ToList();
             return list;
         }
 
         public ICollection<HistoricalRateData> getLiveCurrencies()
         {
-            var instance = new DAL.service.CurrencyLayerApi("http://apilayer.net/api/", "8ef596cb8c336f1f3aeb8edbe1d573e6");
-            var liveList = instance.Invoke<DAL.service.LiveModel>("live");
+            var liveList = instance.Invoke<DAL.json.Live>("live");
             ICollection<HistoricalRateData> list = liveList.Result.quotes.Select(p => new HistoricalRateData(UnixTimeStampToDateTime(liveList.Result.Timestamp), p.Key, p.Value)).ToList();
             return list;
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.service
+namespace DAL.json
 {
-    public class HistoryModel :BaseModel
+    public class HistoryModel :Base
     {
         [JsonProperty("terms")]
         public string Terms { get; set; }

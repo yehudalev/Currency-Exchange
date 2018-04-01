@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.service
+namespace DAL.json
 {
-    public class LiveModel 
+    public class Live
     {
         [Key]
         public int KEY { get; set; }
@@ -30,8 +30,5 @@ namespace DAL.service
         public Dictionary<string, string> quotes { get; set; }
 
     }
-
     
-
-
 }

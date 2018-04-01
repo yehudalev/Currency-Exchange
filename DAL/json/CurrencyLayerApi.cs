@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace DAL.service
+namespace DAL.json
 {
     public partial class CurrencyLayerApi
     {

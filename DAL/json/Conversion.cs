@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace DAL.service
+namespace DAL.json
 {
 
-    public class ConversionModel : BaseModel
+    public class Conversion : Base
     {
 
         [JsonProperty("terms")]

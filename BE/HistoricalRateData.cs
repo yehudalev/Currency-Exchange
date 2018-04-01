@@ -10,6 +10,7 @@ namespace BE
 {
     public class HistoricalRateData
     {
+
         public HistoricalRateData()
         {
 
@@ -23,11 +24,13 @@ namespace BE
         }
 
         [Key]
-        [Column(Order = 2)]
-        public DateTime dateTime { get; set; }
-        [Key]
         [Column(Order = 1)]
         public string src_trg_currency { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        public DateTime dateTime { get; set; }
+
         public string valueRate { get; set; }
     }
 }
