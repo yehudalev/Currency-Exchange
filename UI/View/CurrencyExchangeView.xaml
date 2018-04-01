@@ -1,0 +1,70 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UI.View"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="UI.View.CurrencyExchangeView" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+                xmlns:countriesList="clr-namespace:UI.ModelView"
+    >
+    <UserControl.Resources>
+
+        <countriesList:CurrencyExchangeModelView x:Key="countriesLst"/>
+
+        <Style x:Key="MyButton" TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Height="296" Width="644">
+        
+        <Label Content="Source Country" Height="28" HorizontalAlignment="Left" Margin="30,46,0,0" Name="label2" VerticalAlignment="Top" Width="146" />
+        <Label Content="Target Country" Height="28" HorizontalAlignment="Left" Margin="30,80,0,0" Name="label3" VerticalAlignment="Top" Width="146" />
+       
+       
+      
+        <Label Content="SUM for convert" Height="28" HorizontalAlignment="Left" Margin="30,250,0,0" Name="label8" VerticalAlignment="Top" Width="146" />
+       
+       
+        <TextBox Text="{Binding Path=sum, Mode=OneWay, UpdateSourceTrigger=LostFocus}"  Height="23" HorizontalAlignment="Left" Margin="231,255,0,0"  VerticalAlignment="Top" Width="120" />
+        <ComboBox SelectedItem="{Binding Path=countrySource, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" ItemsSource="{StaticResource ResourceKey=countriesLst}" Height="23" HorizontalAlignment="Left" Margin="231,51,0,0" Name="cboSex"  VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=NameCountry}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox SelectedItem="{Binding Path=countryTarget, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Height="23" HorizontalAlignment="Left" Margin="231,85,0,0" Name="cboState" VerticalAlignment="Top" Width="120" ItemsSource="{StaticResource ResourceKey=countriesLst}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=NameCountry}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+       
+       
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="403,17,12,18">
+            <Button  Style="{StaticResource MyButton}" Height="39" HorizontalAlignment="Left" Margin="36,6,0,0" Name="button1" VerticalAlignment="Top" Width="159">
+                <TextBlock Text="Convert" TextAlignment="Center" TextWrapping="Wrap" />
+            </Button>
+            
+            <TextBox  Height="125" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="40,68,0,0" Name="txtPrice" Text="" VerticalAlignment="Top" Width="155" />
+        </Grid>
+    </Grid>
+</UserControl>
