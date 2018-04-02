@@ -208,3 +208,5 @@ C:\Users\FIX\Documents\currencyLaye\UI\obj\Debug\UI.csproj.CoreCompileInputs.cac
 C:\Users\FIX\Documents\currencyLaye\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\FIX\Documents\currencyLaye\UI\obj\Debug\UI.exe
 C:\Users\FIX\Documents\currencyLaye\UI\obj\Debug\UI.pdb
+C:\Users\FIX\Documents\currencyLaye\UI\bin\Debug\Telerik.Windows.Controls.GridView.dll
+C:\Users\FIX\Documents\currencyLaye\UI\bin\Debug\Telerik.Windows.Controls.GridView.xml

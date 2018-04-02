@@ -7,7 +7,7 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="UI.View.CurrencyExchangeView" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-                xmlns:countriesList="clr-namespace:UI.ModelView"
+                xmlns:countriesList="clr-namespace:UI.ViewModel"
     >
     <UserControl.Resources>
 

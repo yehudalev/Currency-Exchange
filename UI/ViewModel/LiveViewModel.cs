@@ -8,14 +8,18 @@ using BE;
 using BL;
 using UI.Model;
 
-namespace UI.ModelView
+namespace UI.ViewModel
 {
-    public class LiveModelView: ObservableCollection<LiveModel>
+    public class LiveViewModel
     {
         
-        public LiveModelView()
+        public ObservableCollection<LiveModel> liveCollection { get; set; }
+
+        public LiveViewModel()
         {
             IBL myBL = Factory.getBL();
+
+            liveCollection = new ObservableCollection<LiveModel>();
     
             ICollection<HistoricalRateData> historicalRates = myBL.getLiveCurrencies();
             ICollection<Currency> list = myBL.getListCurrencies();
@@ -30,10 +34,9 @@ namespace UI.ModelView
                              where l.currencyName == item.src_trg_currency.Substring(3, 3)
                              select l).First().countryName;
 
-                Add(new LiveModel(item.dateTime, from, to, item.valueRate));
+                liveCollection.Add(new LiveModel(item.dateTime, from, to, item.valueRate));
             }
-
-
+            
         }
 
 

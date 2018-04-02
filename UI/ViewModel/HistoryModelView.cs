@@ -11,7 +11,7 @@ using System.Windows.Input;
 using UI.Commands;
 using UI.Model;
 
-namespace UI.ModelView
+namespace UI.ViewModel
 {
     public class HistoryModelView : ObservableCollection<LiveModel>
     {

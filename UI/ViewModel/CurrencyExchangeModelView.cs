@@ -11,7 +11,7 @@ using UI.Model;
 using UI.Commands;
 using System.ComponentModel;
 
-namespace UI.ModelView
+namespace UI.ViewModel
 {
     public class CurrencyExchangeModelView : ObservableCollection<Country>
     {

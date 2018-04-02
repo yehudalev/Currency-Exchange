@@ -85,6 +85,7 @@
     <Reference Include="Telerik.Windows.Controls, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Chart, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Input, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Navigation, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
@@ -103,9 +104,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\ButtonClickCommand.cs" />
-    <Compile Include="ModelView\CurrencyExchangeModelView.cs" />
-    <Compile Include="ModelView\HistoryModelView.cs" />
+    <Compile Include="ViewModel\CurrencyExchangeModelView.cs" />
+    <Compile Include="ViewModel\HistoryModelView.cs" />
     <Compile Include="Model\Country.cs" />
+    <Compile Include="ViewModel\LiveViewModel.cs" />
     <Compile Include="View\CurrencyExchangeView.xaml.cs">
       <DependentUpon>CurrencyExchangeView.xaml</DependentUpon>
     </Compile>
@@ -141,7 +143,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelView\LiveModelView.cs" />
     <Compile Include="Model\LiveModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
