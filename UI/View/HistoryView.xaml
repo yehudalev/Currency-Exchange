@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <historyVM:HistoryModelView x:Key="historyVM"/>
+        
         <Style x:Key="MyButton" TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Cursor" Value="Hand" />
@@ -50,7 +50,7 @@
                                        ColumnSizer="Star"
                                        Background="White"
                                        HeaderRowHeight="45"
-                                       ItemsSource="{StaticResource ResourceKey=historyVM}"
+                                       
                                        NavigationMode="Row"
                                        SelectionMode="Single"
                                        RowHeight="35">

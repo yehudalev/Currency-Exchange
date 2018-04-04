@@ -8,6 +8,7 @@ namespace UI.Model
 {
     public class Country
     {
+
         public Country(string countryName, string code)
         {
             this.NameCountry = countryName;

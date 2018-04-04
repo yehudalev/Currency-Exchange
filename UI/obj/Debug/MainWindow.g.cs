@@ -62,6 +62,7 @@ using Telerik.Windows.Controls.Behaviors;
 using Telerik.Windows.Controls.BulletGraph;
 using Telerik.Windows.Controls.Carousel;
 using Telerik.Windows.Controls.ChartView;
+using Telerik.Windows.Controls.Data.PropertyGrid;
 using Telerik.Windows.Controls.DragDrop;
 using Telerik.Windows.Controls.Gauge;
 using Telerik.Windows.Controls.GridView;

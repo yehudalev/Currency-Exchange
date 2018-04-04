@@ -63,7 +63,7 @@ namespace UI.ViewModel
         {
           get
           {
-                return new ButtonClickCommand();
+                return null; //new ButtonClickCommand();
           }
         }
         

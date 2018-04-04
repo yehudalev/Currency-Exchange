@@ -5,20 +5,72 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UI.View"
              xmlns:ViewModel="clr-namespace:UI.ViewModel"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="UI.View.LiveCurrenciesView"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             x:Class="UI.View.LiveCurrenciesView"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+    xmlns:model="clr-namespace:UI.Model">
 
     <UserControl.Resources>
+        <Style TargetType="telerik:GridViewCell"
+			   x:Key="activeStyle"
+                >
+            <Setter Property="Background"
+					Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
+            <Setter Property="Foreground"
+					Value="{telerik:Windows8Resource ResourceKey=MainBrush}" />
+        </Style>
+        <Style TargetType="telerik:GridViewCell"
+			   x:Key="defaultStyle"
+			     />
+        <model:MyCellStyleSelector x:Key="cellStyleSelector"
+								   DefaultStyle="{StaticResource defaultStyle}"
+								   ActiveStyle="{StaticResource activeStyle}" />
+
+        
         <ViewModel:LiveViewModel x:Key="liveViewModel"/>
     </UserControl.Resources>
+
+
     <Grid DataContext="{StaticResource liveViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					Grid.Row="0"
+					Margin="0, 5, 0, 5">
+            <telerik:RadComboBox
+                               ItemsSource="{Binding namesCountry}" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}"  Command="{Binding ComoOriginCountryCommand}" CommandParameter="{StaticResource liveViewModel}"
+                               Text="Origin Currency"
+							   Width="150"
+							   Margin="0, 0, 5, 0" Height="22" VerticalAlignment="Bottom" />
+            <telerik:RadButton Content="Update Rates"
+							   Width="150"
+							   Margin="0, 0, 5, 0" Command="{Binding Path=ButtonClickUpdateLiveCommand}"
+                               CommandParameter="{StaticResource liveViewModel}"/>
+        </StackPanel>
 
-        <syncfusion:SfDataGrid ItemsSource="{Binding liveCollection}"/>
-
-
-
+        <telerik:RadGridView Grid.Row="1"
+							 Margin="0, 5, 0, 0" ItemsSource="{Binding liveCollection}" GroupRenderMode="Flat"
+							 AutoGenerateColumns="False"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 Width="600"
+							 IsFilteringAllowed="True"  Grid.RowSpan="3">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Date}" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CurrencyOrigin}" Header="Origin Currency"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CurrencyForeign}" Header="Foreign Currency"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Value, StringFormat=f4}"
+											CellStyleSelector="{StaticResource cellStyleSelector}" Header="Rate" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        
 
     </Grid>
 </UserControl>

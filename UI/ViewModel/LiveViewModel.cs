@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using BE;
 using BL;
+using UI.Commands;
 using UI.Model;
 
 namespace UI.ViewModel
@@ -13,13 +15,25 @@ namespace UI.ViewModel
     public class LiveViewModel
     {
         
+        public LiveViewModel()
+        {
+            liveCollection = this.getLiveCurrencies();
+            namesCountry = (from i in getListCurrencies()
+                            select i.NameCountry).ToList();
+
+        }
+
         public ObservableCollection<LiveModel> liveCollection { get; set; }
 
-        public LiveViewModel()
+        public ICollection<string> namesCountry { get; set; }
+
+        public string selectedItem { get; set; }
+
+        public ObservableCollection<LiveModel> getLiveCurrencies()
         {
             IBL myBL = Factory.getBL();
 
-            liveCollection = new ObservableCollection<LiveModel>();
+            ObservableCollection<LiveModel>  liveCollection = new ObservableCollection<LiveModel>();
     
             ICollection<HistoricalRateData> historicalRates = myBL.getLiveCurrencies();
             ICollection<Currency> list = myBL.getListCurrencies();
@@ -36,11 +50,24 @@ namespace UI.ViewModel
 
                 liveCollection.Add(new LiveModel(item.dateTime, from, to, item.valueRate));
             }
-            
+
+            return liveCollection;
         }
 
+        public ICollection<Country> getListCurrencies()
+        {
+            ICollection<Country> countries = new Collection<Country>();
+            IBL myBL = Factory.getBL();
+            ICollection<Currency> currencies = myBL.getListCurrencies();
+            foreach (Currency item in currencies)
+            {
+                countries.Add(new Country(item.countryName, item.currencyName));
+            }
 
+            return countries;
+        }
 
-
+        public ICommand ButtonClickUpdateLiveCommand { get { return new ButtonClickUpdateLiveCommand(); } }
+        
     }
 }

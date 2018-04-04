@@ -15,10 +15,11 @@ namespace UI.Model
     {
         public LiveModel(DateTime date, string curOr, string curFo, string val)
         {
-            this.Date = date;
-            this.CurrencyOrigin = curOr;
-            this.CurrencyForegin = curFo;
-            this.Value = val;
+            this.date = date;
+            this.currencyOrigin = curOr;
+            this.currencyForeign = curFo;
+            this.value = val;
+            //this.change = change;
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -29,7 +30,7 @@ namespace UI.Model
             }
         }
 
-        [Display(Name = "Last Update", Order = 1)]
+        
         private DateTime date;
         public DateTime Date
         {
@@ -46,7 +47,7 @@ namespace UI.Model
                 }
             }
         }
-        [Display(Name = "Origin Currency", Order = 2)]
+        
         private string currencyOrigin;
         public string CurrencyOrigin
         {
@@ -64,7 +65,7 @@ namespace UI.Model
             }
 
         }
-        [Display(Name = "Foreign Currency ", Order = 3)]
+       
         private string currencyForeign;
         public string CurrencyForeign
         {
@@ -84,7 +85,7 @@ namespace UI.Model
 
        
 
-        [Display(Name = "Rate", Order = 4)]
+       
         private string value;
         public string Value
         {
@@ -105,23 +106,23 @@ namespace UI.Model
 
 
 
-        [Display(Name = "Change", Order = 5)]
-        private long change;
-        public long Change
-        {
-            get
-            {
-                return this.change;
-            }
-            set
-            {
-                if (change != value)
-                {
-                    this.change = value;
-                    this.OnPropertyChanged("Change");
-                }
-            }
-        }
+        //[Display(Name = "Change", Order = 5)]
+        //private long change;
+        //public long Change
+        //{
+        //    get
+        //    {
+        //        return this.change;
+        //    }
+        //    set
+        //    {
+        //        if (change != value)
+        //        {
+        //            this.change = value;
+        //            this.OnPropertyChanged("Change");
+        //        }
+        //    }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
