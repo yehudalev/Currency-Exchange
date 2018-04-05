@@ -26,3 +26,17 @@ C:\Users\FIX\Documents\currencyLaye\BE\obj\Debug\BE.csproj.CoreCompileInputs.cac
 C:\Users\FIX\Documents\currencyLaye\BE\obj\Debug\BE.csproj.CopyComplete
 C:\Users\FIX\Documents\currencyLaye\BE\obj\Debug\BE.dll
 C:\Users\FIX\Documents\currencyLaye\BE\obj\Debug\BE.pdb
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\BE.dll.config
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\BE.dll
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\BE.pdb
+C:\Users\FIX\Desktop\yehudaWPF\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+C:\Users\FIX\Desktop\yehudaWPF\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\FIX\Desktop\yehudaWPF\BE\obj\Debug\BE.dll
+C:\Users\FIX\Desktop\yehudaWPF\BE\obj\Debug\BE.pdb
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\EntityFramework.dll
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\EntityFramework.xml
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FIX\Desktop\yehudaWPF\BE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\FIX\Desktop\yehudaWPF\BE\obj\Debug\BE.csproj.CopyComplete

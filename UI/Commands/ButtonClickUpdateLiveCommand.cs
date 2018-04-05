@@ -29,7 +29,15 @@ namespace UI.Commands
             currentliveCollection = liveViewModel.getLiveCurrencies();
             if (liveViewModel.liveCollection.First().Date == currentliveCollection.First().Date)
                 MessageBox.Show("there are no updates");
-            liveViewModel.liveCollection = currentliveCollection;
+            foreach(LiveModel item in liveViewModel.liveCollection)
+                foreach (LiveModel item1 in currentliveCollection)
+                {
+                    if (item.CurrencyOrigin == item1.CurrencyOrigin && item.CurrencyForeign == item1.CurrencyOrigin)
+                    {
+                        item.Date = item1.Date;
+                        item.Value = item1.Value;
+                    }
+                }
         }
     }
 }
