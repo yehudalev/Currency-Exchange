@@ -32,13 +32,13 @@ namespace UI
 
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
             //ModelView.LiveModelView liveModels = new ModelView.LiveModelView();
 
             IBL myBL = BL.Factory.getBL();
             
-            //myBL.initHistoryRatesAnnual();
+            myBL.initHistoryRatesAnnual();
 
            // DataContext = myBL.getRatesByRange(new DateTime(2017, 3, 26), DateTime.Today);
 

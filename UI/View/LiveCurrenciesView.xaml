@@ -28,7 +28,7 @@
 								   DefaultStyle="{StaticResource defaultStyle}"
 								   ActiveStyle="{StaticResource activeStyle}" />
 
-        
+
         <ViewModel:LiveViewModel x:Key="liveViewModel"/>
     </UserControl.Resources>
 
@@ -44,11 +44,11 @@
 					HorizontalAlignment="Center"
 					Grid.Row="0"
 					Margin="0, 5, 0, 5">
-            <telerik:RadComboBox 
-                               ItemsSource="{Binding namesCountry}" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}"  Command="{Binding ComoOriginCountryCommand}" CommandParameter="{StaticResource liveViewModel}"
+            <telerik:RadComboBox SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}"  Command="{Binding ComoOriginCountryCommand}" CommandParameter="{StaticResource liveViewModel}"
                                Text="Origin Currency"
 							   Width="150"
 							   Margin="0, 0, 5, 0" Height="22" VerticalAlignment="Bottom">
+                <ComboBox Height="100" Width="120"/>
             </telerik:RadComboBox>
             <telerik:RadButton Content="Update Rates"
 							   Width="150"
@@ -71,7 +71,7 @@
 											CellStyleSelector="{StaticResource cellStyleSelector}" Header="Rate" />
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        
+
 
     </Grid>
 </UserControl>

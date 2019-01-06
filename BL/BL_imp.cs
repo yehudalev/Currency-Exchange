@@ -29,6 +29,11 @@ namespace BL
             return myDal.getLiveCurrencies();
         }
 
+        public ICollection<HistoricalRateData> getLiveCurrenciesSpecifyOutputCurrencies(Dictionary<string, string> dictionary)
+        {
+            return myDal.getLiveCurrenciesSpecifyOutputCurrencies(dictionary);
+        }
+
         public ICollection<HistoricalRateData> getRatesByDate(DateTime date)
         {
             return myDal.getRatesByDate(date);

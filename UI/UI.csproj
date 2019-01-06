@@ -109,8 +109,11 @@
     <Compile Include="Commands\ButtonClickSelectedHistoryCommand.cs" />
     <Compile Include="Commands\ButtonClickUpdateLiveCommand.cs" />
     <Compile Include="Commands\ComoOriginCountryCommand.cs" />
+    <Compile Include="Commands\CurrencyConvertCommand.cs" />
+    <Compile Include="Model\CurrencyModel.cs" />
+    <Compile Include="Model\ExchangeModel.cs" />
     <Compile Include="Model\MyCellStyleSelector.cs" />
-    <Compile Include="ViewModel\CurrencyExchangeModelView.cs" />
+    <Compile Include="ViewModel\ExchangeViewModel.cs" />
     <Compile Include="ViewModel\HistoryModelView.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="ViewModel\LiveViewModel.cs" />

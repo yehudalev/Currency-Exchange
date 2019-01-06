@@ -9,6 +9,7 @@ namespace BL
 {
     public interface IBL
     {
+        ICollection<HistoricalRateData> getLiveCurrenciesSpecifyOutputCurrencies(Dictionary<string, string> dictionary);
         double convert(string from, string to, string amount);
         ICollection<Currency> getListCurrencies();
         ICollection<HistoricalRateData> getLiveCurrencies();

@@ -19,7 +19,7 @@ namespace DAL
     {
 
         string url = "http://apilayer.net/api/";
-        string key = "8ef596cb8c336f1f3aeb8edbe1d573e6";
+        string key = "df5a28be08c7263dc884d0f87b71e914";
         CurrencyLayerApi instance { get; set; }
 
         public Dal_with_DB()
@@ -100,6 +100,13 @@ namespace DAL
         public ICollection<HistoricalRateData> getLiveCurrencies()
         {
             var liveList = instance.Invoke<DAL.json.Live>("live");
+            ICollection<HistoricalRateData> list = liveList.Result.quotes.Select(p => new HistoricalRateData(UnixTimeStampToDateTime(liveList.Result.Timestamp), p.Key, p.Value)).ToList();
+            return list;
+        }
+
+        public ICollection<HistoricalRateData> getLiveCurrenciesSpecifyOutputCurrencies(Dictionary<string, string> dictionary)
+        {
+            var liveList = instance.Invoke<DAL.json.Live>("live", dictionary);
             ICollection<HistoricalRateData> list = liveList.Result.quotes.Select(p => new HistoricalRateData(UnixTimeStampToDateTime(liveList.Result.Timestamp), p.Key, p.Value)).ToList();
             return list;
         }

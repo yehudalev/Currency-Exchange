@@ -38,7 +38,6 @@ C:\Users\FIX\Documents\currencyLaye\BL\obj\Debug\BL.csproj.CoreCompileInputs.cac
 C:\Users\FIX\Documents\currencyLaye\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\FIX\Documents\currencyLaye\BL\obj\Debug\BL.dll
 C:\Users\FIX\Documents\currencyLaye\BL\obj\Debug\BL.pdb
-C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\Users\FIX\Desktop\yehudaWPF\BL\bin\Debug\BL.dll.config
 C:\Users\FIX\Desktop\yehudaWPF\BL\bin\Debug\BL.dll
@@ -58,3 +57,4 @@ C:\Users\FIX\Desktop\yehudaWPF\BL\bin\Debug\Newtonsoft.Json.xml
 C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.dll
 C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.pdb
+C:\Users\FIX\Desktop\yehudaWPF\BL\obj\Debug\BL.csprojAssemblyReference.cache
