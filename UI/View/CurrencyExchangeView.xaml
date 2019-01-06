@@ -8,10 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
                 xmlns:countriesList="clr-namespace:UI.ViewModel"
-    >
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
     <UserControl.Resources>
 
-        <countriesList:CurrencyExchangeModelView x:Key="countriesLst"/>
+        <countriesList:ExchangeViewModel x:Key="exchangeViewModel"/>
 
         <Style x:Key="MyButton" TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -32,39 +32,26 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid Height="296" Width="644">
-        
-        <Label Content="Source Country" Height="28" HorizontalAlignment="Left" Margin="30,46,0,0" Name="label2" VerticalAlignment="Top" Width="146" />
-        <Label Content="Target Country" Height="28" HorizontalAlignment="Left" Margin="30,80,0,0" Name="label3" VerticalAlignment="Top" Width="146" />
-       
-       
-      
-        <Label Content="SUM for convert" Height="28" HorizontalAlignment="Left" Margin="30,250,0,0" Name="label8" VerticalAlignment="Top" Width="146" />
-       
-       
-        <TextBox Text="{Binding Path=sum, Mode=OneWay, UpdateSourceTrigger=LostFocus}"  Height="23" HorizontalAlignment="Left" Margin="231,255,0,0"  VerticalAlignment="Top" Width="120" />
-        <ComboBox SelectedItem="{Binding Path=countrySource, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" ItemsSource="{StaticResource ResourceKey=countriesLst}" Height="23" HorizontalAlignment="Left" Margin="231,51,0,0" Name="cboSex"  VerticalAlignment="Top" Width="120">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=NameCountry}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <ComboBox SelectedItem="{Binding Path=countryTarget, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Height="23" HorizontalAlignment="Left" Margin="231,85,0,0" Name="cboState" VerticalAlignment="Top" Width="120" ItemsSource="{StaticResource ResourceKey=countriesLst}" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=NameCountry}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-       
-       
+    <Grid DataContext="{StaticResource exchangeViewModel}" Height="296" Width="644">
+
+        <Label Content="From Currency" Height="28" HorizontalAlignment="Left" Margin="30,46,0,0" Name="label2" VerticalAlignment="Top" Width="146" />
+        <Label Content="To Currency" Height="28" HorizontalAlignment="Left" Margin="30,80,0,0" Name="label3" VerticalAlignment="Top" Width="146" />
+
+
+
+        <Label Content="Amount" Height="28" HorizontalAlignment="Left" Margin="30,250,0,0" Name="label8" VerticalAlignment="Top" Width="146" />
+
+
+        <TextBox Text="{Binding Path=amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="23" HorizontalAlignment="Left" Margin="231,255,0,0"  VerticalAlignment="Top" Width="120"/>
+        <telerik:RadComboBox  ItemsSource="{Binding namesCountry}" SelectedItem="{Binding Path=selectedOriginItem, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"  Height="23" HorizontalAlignment="Left" Margin="231,51,0,0"  VerticalAlignment="Top" Width="120" Command="{Binding CurrencyConvertCommand}" CommandParameter="{StaticResource exchangeViewModel}"/>
+        <telerik:RadComboBox  ItemsSource="{Binding namesCountry}" SelectedItem="{Binding Path=selectedForeignItem, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"  Height="23" HorizontalAlignment="Left" Margin="231,85,0,0" VerticalAlignment="Top" Width="120" Command="{Binding CurrencyConvertCommand}" CommandParameter="{StaticResource exchangeViewModel}"/>
+
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="403,17,12,18">
-            <Button  Style="{StaticResource MyButton}" Height="39" HorizontalAlignment="Left" Margin="36,6,0,0" Name="button1" VerticalAlignment="Top" Width="159">
-                <TextBlock Text="Convert" TextAlignment="Center" TextWrapping="Wrap" />
+            <Button  Style="{StaticResource MyButton}" Height="39" HorizontalAlignment="Left" Margin="36,6,0,0" Name="button1" VerticalAlignment="Top" Width="159" Command="{Binding CurrencyConvertCommand}" CommandParameter="{StaticResource exchangeViewModel}">
+                <TextBlock Text="Convert" TextAlignment="Center" TextWrapping="Wrap"/>
             </Button>
-            
-            <TextBox  Height="125" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="40,68,0,0" Name="txtPrice" Text="" VerticalAlignment="Top" Width="155" />
+
+            <TextBox Text="{Binding Path=Result, Mode=OneWay, UpdateSourceTrigger=LostFocus}"  Height="125" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="40,68,0,0" Name="txtPrice" VerticalAlignment="Top" Width="155" />
         </Grid>
     </Grid>
 </UserControl>
