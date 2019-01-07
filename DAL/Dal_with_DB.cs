@@ -97,6 +97,17 @@ namespace DAL
             }
         }
 
+        //this function get country name and return the code
+        public string getCurrencyCode(string currencyName)
+        {
+            using (var ctx = new RatesDBContext())
+            {
+                List<Currency> res = new List<Currency>();
+                    res = ctx.currencies.SqlQuery("SELECT * FROM dbo.Currencies WHERE countryName='"+currencyName+"'").ToList<Currency>();
+                return res[0].currencyName;
+            }
+        }
+
         public ICollection<HistoricalRateData> getLiveCurrencies()
         {
             var liveList = instance.Invoke<DAL.json.Live>("live");
@@ -106,7 +117,9 @@ namespace DAL
 
         public ICollection<HistoricalRateData> getLiveCurrenciesSpecifyOutputCurrencies(Dictionary<string, string> dictionary)
         {
-            var liveList = instance.Invoke<DAL.json.Live>("live", dictionary);
+            Dictionary<string, string> code = new Dictionary<string, string>();
+            code.Add("currencies", getCurrencyCode(dictionary.Values.First()));
+            var liveList = instance.Invoke<DAL.json.Live>("live", code);
             ICollection<HistoricalRateData> list = liveList.Result.quotes.Select(p => new HistoricalRateData(UnixTimeStampToDateTime(liveList.Result.Timestamp), p.Key, p.Value)).ToList();
             return list;
         }
