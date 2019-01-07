@@ -38,11 +38,11 @@ namespace UI
 
             IBL myBL = BL.Factory.getBL();
             
-            myBL.initHistoryRatesAnnual();
+           myBL.initHistoryRatesAnnual();
+            //the follow comment should use when we run the program for the 1st time
+            //DataContext = myBL.getRatesByRange(new DateTime(2018, 1, 1), DateTime.Today);
 
-           // DataContext = myBL.getRatesByRange(new DateTime(2017, 3, 26), DateTime.Today);
-
-           // ICollection<HistoricalRateData> liveCurrencies = myBL.getLiveCurrencies();
+           //ICollection<HistoricalRateData> liveCurrencies = myBL.getLiveCurrencies();
             
             
         }
